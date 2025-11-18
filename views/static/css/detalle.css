@@ -1,0 +1,105 @@
+/* Detalle de Estación - Diseño Similar al Panel */
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.detalle {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detalle__contenedor {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    text-align: center;
+}
+
+.detalle__titulo {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.detalle__texto {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.detalle__boton {
+    margin-bottom: 30px;
+}
+
+.graficos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.grafico-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.grafico-card:hover {
+    transform: translateY(-5px);
+}
+
+.grafico-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.grafico-card canvas {
+    max-width: 100%;
+    height: 200px;
+}
+
+.detalle__boton {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.detalle__boton:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detalle__contenedor {
+        padding: 20px;
+    }
+
+    .detalle__titulo {
+        font-size: 2em;
+    }
+
+    .graficos {
+        grid-template-columns: 1fr;
+    }
+
+    .grafico-card canvas {
+        height: 150px;
+    }
+}

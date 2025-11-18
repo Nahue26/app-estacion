@@ -1,0 +1,118 @@
+<?php 
+	/* Crea un nuevo usuario*/
+	/*==========*/
+	/*INSERT INTO `usuarios` (`id`, `email`, `password`, `nick`) VALUES ('1000', 'mattprofe@gmail.com', '1234', 'Matt'); */
+
+	/**
+	 * 
+	 */
+	class Usuarios extends DBAbstract
+	{
+
+		public $email;
+		
+		function __construct()
+		{
+			/* se debe invocar al constructor de la clase padre */
+			parent::__construct();
+
+			$this->email = "";
+		}
+
+
+		/**
+		 * 
+		 * Retorna la cantidad de usuarios
+		 * 
+		 * */
+		public function getCant(){
+			
+			// query("CALL getCant()");
+
+			return count($this->query("SELECT * FROM `usuarios`"));
+		}
+
+
+		/* registra un nuevo usuario, valida si el email ya esta registrado*/
+		public function register($form){
+
+			/* si el email esta vacio*/
+			if($form["txt_email"]==""){
+				return ["errno" => 400, "error" => "Falta email"];
+			}
+
+			/* si el password esta vacio*/
+			if($form["txt_password"]==""){
+				return ["errno" => 400, "error" => "Falta contraseña"];
+			}
+
+
+			if($this->login($form)["errno"] == 404){
+
+				$password_encripted = password_hash($form["txt_password"], PASSWORD_DEFAULT);
+
+				$sql = "INSERT INTO `usuarios` (`id_user`, `email`, `pass`, `name`, `create_at`, `update_at`, `delete_at`, `email_token`, `img_url`) VALUES (NULL, '".$form["txt_email"]."', '".$password_encripted."', '', CURRENT_TIMESTAMP, NULL, NULL, '', '');";
+
+				$response = $this->query($sql);
+
+				return ["errno" => 202, "error" => "Se creo el usuario correctamente"];
+			}
+
+			return ["errno" => 409, "error" => "Email ya registrado, recuperar su cuenta?"];
+		}
+
+
+		/**
+		 * 
+		 * intenta loguear
+		 * 
+		 * 202 = usuario valido
+		 * 400 = email vacio y/o pass vacio
+		 * 404 = usuario invalido
+		 * 402 = usuario valido contraseña incorrecto
+		 * 
+		 * */
+		public function login($form){
+
+			/* si el email esta vacio*/
+			if($form["txt_email"]==""){
+				return ["errno" => 400, "error" => "Falta email"];
+			}
+
+			/* si el password esta vacio*/
+			if($form["txt_password"]==""){
+				return ["errno" => 400, "error" => "Falta contraseña"];
+			}
+
+			/* busca el correo electronico en la tabla usuarios */
+			$response = $this->query("SELECT * FROM `usuarios` WHERE `email` LIKE '".$form["txt_email"]."'");
+
+			/*si la cantidad de filas es 0 no se encontro email en usuarios*/
+			if(count($response) == 0){
+				return ["errno" => 404, "error" => "Correo no encontrado"];
+			}
+
+			/*correo encontrado pero contraseña incorrecta*/
+			if(!password_verify($form["txt_password"], $response[0]["pass"])){
+				return ["errno" => 403, "error" => "Contraseña incorrecta"];
+			}
+			
+
+			/* correo electronico encontrado y password correcto*/
+
+
+
+			$this->email = $form["txt_email"];
+
+			$_SESSION[APP_NAME]["user"] = $this;
+			
+			return ["errno" => 202, "error" => "Acceso valido"];
+
+		}
+	}
+
+
+	
+
+
+ ?>
