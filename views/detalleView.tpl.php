@@ -13,7 +13,7 @@
   <div class="detalle__contenedor">
     <h2 class="detalle__titulo">{{ nombre }}</h2>
     <p class="detalle__texto">Visualización de los datos de la estación en tiempo real.</p>
-    <a href="?v=panel" class="detalle__boton">← Volver al panel</a>
+    <a href="?v=panel" class="detalle__boton">Volver al panel</a>
 
     <div class="graficos">
       <div class="grafico-card">

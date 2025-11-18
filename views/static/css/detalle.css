@@ -70,7 +70,7 @@ body {
 
 .detalle__boton {
     display: inline-block;
-    background: #4CAF50;
+    background: #007bff;
     color: white;
     padding: 12px 25px;
     text-decoration: none;
@@ -81,7 +81,7 @@ body {
 }
 
 .detalle__boton:hover {
-    background: #45a049;
+    background: #0056b3;
     transform: scale(1.05);
 }
 
