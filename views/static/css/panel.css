@@ -1,7 +1,7 @@
 /* Panel de Estaciones - Diseño Moderno */
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -64,7 +64,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background: linear-gradient(90deg, #4CAF50, #2E7D32);
 }
 
 .estacion-content {
@@ -92,7 +92,7 @@ body {
 }
 
 .estacion-card:hover .estacion-apodo {
-    color: #667eea;
+    color: #4CAF50;
 }
 
 .loading {

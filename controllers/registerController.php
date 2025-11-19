@@ -1,42 +1,30 @@
 <?php
+require_once __DIR__ . "/../models/Usuarios.php";
 
-	include "models/Usuarios.php";
+$message_div = "";
 
+if (isset($_SESSION[APP_NAME]["user"])) {
+    header("Location: index.php?v=panel");
+    exit;
+}
 
-	$msg_error = "";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $usuario = new Usuarios();
+    $result = $usuario->register($_POST);
 
-	
-	/* si existe el boton de registro*/
-	if(isset($_POST["btn_register"])){
+    if ($result['errno'] == 202) {
+        $message_div = "<div class='msg msg-success'>{$result['error']}</div>";
+    } else {
+        $message_div = "<div class='msg msg-error'>{$result['error']}</div>";
+    }
+}
 
-		/* se instancia la clase usuario*/
-		$usuario = new Usuarios();	
+$tpl = new Enano("register");
+$tpl->assignVar([
+    "titulo" => "Registrarse",
+    "APP_SECTION" => "Registro",
+    "message_div" => $message_div
+]);
 
-		/* realiza el registro */
-		$response =$usuario->register($_POST);
-
-
-		/* si se creo el usuario correctamente entonces va al login*/
-		if($response["errno"] == 202){
-			header("Location: ?slug=login");
-		}
-
-		$msg_error = $response["error"];
-	}	
-
-
-	/* Se instancia a la clase del motor de plantillas */
-	$tpl = new Enano("register");
-
-
-	$tpl->assignVar(["MSG_ERROR" => $msg_error]);
-
-	/*para asignar valor a las variables dentro la plantilla*/
-	/* formato {{ variable }} valor a pasar como un vector asociativo [ variable_html => valor] */
-	$tpl->assignVar(["APP_SECTION" => "Registro"]);
-
-	/* Imprime la plantilla en la página */
-	$tpl->printToScreen();
-
-
- ?>
+$tpl->printToScreen();
+?>

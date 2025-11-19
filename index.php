@@ -20,8 +20,8 @@ define("TITULO_PAGINA", "Panel de Estaciones");
 
 // Constantes adicionales para Enano
 define("TEXTO_PRINCIPAL", "#000000");
-define("FONDO_HEADER_GRADIENTE_INICIO", "#667eea");
-define("FONDO_HEADER_GRADIENTE_FIN", "#764ba2");
+define("FONDO_HEADER_GRADIENTE_INICIO", "#4CAF50");
+define("FONDO_HEADER_GRADIENTE_FIN", "#2E7D32");
 define("TEXTO_INVERTIDO", "#ffffff");
 define("TEXTO_HOVER_NAV", "#cccccc");
 define("FONDO_BOTON", "#4CAF50");
@@ -36,6 +36,15 @@ define("APP_AUTHOR", "Desarrollador");
 define("APP_SLOGAN", "Monitoreo en tiempo real");
 
 require_once __DIR__ . "/librarys/Enano.php";
+require_once __DIR__ . "/config_db.php";
+
+// Definir constantes de DB
+define("DB_HOST", $host);
+define("DB_USER", $user);
+define("DB_PASS", $pass);
+define("DB_NAME", $dbname);
+
+session_start();
 
 $v = $_GET['v'] ?? 'landing';
 $id = $_GET['id'] ?? '';
@@ -47,6 +56,32 @@ switch ($v) {
   case 'detalle':
     require_once "controllers/detalleController.php";
     break;
+  case 'login':
+    require_once "controllers/loginController.php";
+    break;
+  case 'recovery':
+    require_once "controllers/recoveryController.php";
+    break;
+  case 'register':
+    require_once "controllers/registerController.php";
+    break;
+  case 'recovery':
+    require_once "controllers/recoveryController.php";
+    break;
+  case 'reset':
+    require_once "controllers/resetController.php";
+    break;
+  case 'blocked':
+    // Handle blocked/token
+    require_once "controllers/blockedController.php";
+    break;
+  case 'validate':
+    require_once "controllers/validateController.php";
+    break;
+  case 'logout':
+    session_destroy();
+    header("Location: index.php?v=login");
+    exit;
   default:
     require_once "controllers/landingController.php";
     break;

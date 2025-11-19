@@ -9,6 +9,9 @@
 <body>
 
 <header class="panel-header">
+    <div style="text-align: right; margin-bottom: 10px;">
+        <a href="index.php?v=logout" style="color: #333; text-decoration: none; font-weight: bold;">Cerrar Sesión</a>
+    </div>
     <h1>Panel de Estaciones</h1>
     <p>Seleccioná una estación para ver sus datos.</p>
 </header>

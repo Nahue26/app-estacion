@@ -1,78 +1,37 @@
-@extends(head)
-
-<style>
-        .login-container {
-            background-color: var(--fondo-caja);
-            padding: 2rem 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px var(--sombra-caja);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .login-container h2 {
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            color: var(--fondo-header-gradiente-fin);
-        }
-
-        .login-container input[type="email"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
-
-        .login-container button {
-            width: 100%;
-            padding: 0.8rem;
-            background-color: var(--fondo-boton);
-            color: var(--texto-invertido);
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .login-container button:hover {
-            background-color: var(--fondo-boton-hover);
-        }
-    </style>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - {{ APP_NAME }}</title>
+    <link rel="stylesheet" href="views/static/css/auth.css">
+</head>
 <body>
+    <div class="landing-container">
+        <h1 class="landing-title">{{ titulo }}</h1>
+        <p class="landing-description">Crea tu cuenta para acceder al sistema</p>
 
-<!-- 	<h1>Ingreso de usuario {{ APP_NAME }}</h1>
-	<h2>Y podras ser parte de los {{ CANT_USER }}</h2>
- -->
-	
+        {{ message_div }}
 
-<!-- 
-	<form action="?slug=login" method="POST">
-		
-		<input type="text" name="txt_email" id="txt_email" placeholder="email">
-		<input type="text" name="txt_password" id="txt_password" placeholder="Contraseña">
-		<input type="submit" name="btn_login" value="Ingresar">
-
-	</form> -->
-
-	<div class="login-container">
-        <h2>Registro</h2>
-        <form action="?slug=register" method="POST">
-            <div id="msg_error">{{ MSG_ERROR }}</div>
-
-            <input type="email" name="txt_email" placeholder="Correo electrónico" required>
-            <input type="password" name="txt_password" placeholder="Contraseña" required>
-            <button type="submit" name="btn_register">Registrarme</button>
+        <form method="POST" action="index.php?v=register" style="background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+            <div style="margin-bottom: 20px;">
+                <label for="txt_email" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">Email:</label>
+                <input type="email" id="txt_email" name="txt_email" required style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #ddd; font-size: 16px; transition: border-color 0.3s; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="txt_password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">Contraseña:</label>
+                <input type="password" id="txt_password" name="txt_password" required style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #ddd; font-size: 16px; transition: border-color 0.3s; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 25px;">
+                <label for="txt_repeat_password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">Repetir Contraseña:</label>
+                <input type="password" id="txt_repeat_password" name="txt_repeat_password" required style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #ddd; font-size: 16px; transition: border-color 0.3s; box-sizing: border-box;">
+            </div>
+            <button type="submit" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s;">Registrarse</button>
         </form>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="index.php?v=login" style="color: #333; text-decoration: none;">¿Ya tienes cuenta? Inicia sesión</a>
+        </div>
     </div>
-	
-	@extends(footer)
 </body>
 </html>
-

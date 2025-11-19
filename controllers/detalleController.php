@@ -6,6 +6,11 @@ if (!$chipid) {
     die("Falta el parámetro ID");
 }
 
+if(!isset($_SESSION[APP_NAME]["user"])){
+    header("Location: index.php?v=login");
+    exit;
+}
+
 $lista = @file_get_contents("https://mattprofe.com.ar/proyectos/app-estacion/datos.php?mode=list-stations");
 $lista = json_decode($lista, true);
 

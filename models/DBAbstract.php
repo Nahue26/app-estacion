@@ -1,61 +1,53 @@
 <?php 
 
+class DBAbstract
+{
+    protected $db; // ← mejor en protected para que los modelos puedan usarlo si lo necesitan
+    
+    function __construct()
+    {
+        $this->db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	/**
-	 * 
-	 * BDAbstract.php esta clase es solo para realizar la conexión contra la base de datos
-	 * 
-	 * 
-	 * */
+        if ($this->db->connect_error) {
+            die("Error de conexión: " . $this->db->connect_error);
+        }
 
-	/**
-	 * 
-	 */
-	class DBAbstract
-	{
+        // UTF8 obligatorio para que no rompa caracteres
+        $this->db->set_charset("utf8mb4");
+    }
 
-		private $db;
-		
-		/*Cuando se crea el objeto se genera la conexion a la base de datos*/
-		function __construct()
-		{
-			$this->db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		}
+    // Obtener la conexión (USADO POR escape())
+    public function getConnection() {
+        return $this->db;
+    }
 
-		/*Por ahora solo sirve para hacer select*/
-		
-		public function query($ssql){
+    // Ejecuta SELECT / INSERT / UPDATE / DELETE
+    public function query($ssql)
+    {
+        $response = $this->db->query($ssql);
 
-		  	$response = $this->db->query($ssql);
+        if ($response === false) {
+            throw new Exception("Error en la consulta: " . $this->db->error . " — SQL: $ssql");
+        }
 
-		  	$type_query = strtok($ssql, " ");
+        $type_query = strtoupper(strtok(trim($ssql), " "));
 
-			switch ($type_query) {
-				case 'SELECT':
-					/* esto de aca es para SELECT*/
-					return $response->fetch_all(MYSQLI_ASSOC);
-					break;
+        switch ($type_query) {
 
-				case 'INSERT':
-						return $this->db->insert_id;
-					break;
+            case 'SELECT':
+                return $response->fetch_all(MYSQLI_ASSOC);
 
-				case 'UPDATE':
-					// code...
-					break;
+            case 'INSERT':
+                return $this->db->insert_id;
 
-				case 'DELETE':
-					// code...
-					break;
-				
-				default:
-					// code...
-					break;
-			}
+            case 'UPDATE':
+            case 'DELETE':
+                return $this->db->affected_rows;
 
-			
-		}
-	}
+            default:
+                return $response;
+        }
+    }
+}
 
-
- ?>
+?>

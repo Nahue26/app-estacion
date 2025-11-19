@@ -1,7 +1,7 @@
 /* Detalle de Estación - Diseño Similar al Panel */
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -70,7 +70,7 @@ body {
 
 .detalle__boton {
     display: inline-block;
-    background: #007bff;
+    background: #4CAF50;
     color: white;
     padding: 12px 25px;
     text-decoration: none;
@@ -81,7 +81,7 @@ body {
 }
 
 .detalle__boton:hover {
-    background: #0056b3;
+    background: #2E7D32;
     transform: scale(1.05);
 }
 
