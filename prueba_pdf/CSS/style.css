@@ -1,0 +1,117 @@
+:root {
+  --gris-oscuro: #3c3d3b;
+  --azul-profundo: #031926;
+  --azul-medio: #468189;
+  --verde-suave: #77aca2;
+  --texto-claro: #f5f5f5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1d232a;
+}
+
+main {
+  height: auto;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.formulario {
+  width: 90%;
+  max-width: 350px;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formulario input[type="file"] {
+  padding: 10px;
+  border: 2px dashed var(--azul-medio);
+  border-radius: 10px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.formulario input[type="file"]:hover {
+  border-color: #007bff;
+}
+
+#boton {
+  padding: 12px;
+  background-color: var(--azul-profundo);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#boton:hover {
+  background-color: var(--azul-medio);
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1em;
+  gap: 1em;
+}
+
+.links a {
+  background-color: #f5f7fa; 
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 2em;
+  width: 150px;
+  height: 170px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--azul-profundo);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links a:hover {
+  transform: scale(1.02);
+}
+
+.links a img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5em;
+}
+
+.links a span {
+  font-size: 14px;
+}
+
+
+
+@media (max-width: 480px) {
+  .formulario {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .links a {
+    width: 120px;
+    height: 130px;
+    font-size: 0.85rem;
+    padding: 1em;
+  }
+}

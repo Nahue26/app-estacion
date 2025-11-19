@@ -1,0 +1,90 @@
+cd|/var/www/html/alumno/9899: No such file or directory*<br>
+ls|10007  12408  6812  6924                  9895        changapp-demo
+10014  3555   6813  6929                  9896        cultiv.ar
+10057  3600   6814  6938                  9897        dataearth
+10059  3618   6819  6964                  9899        dev
+10092  3627   6825  7069                  9900        edbhm
+10093  3637   6826  7071                  9901        etc
+11089  3638   6829  71                    9903        fast-rent
+11759  3662   6833  7100                  9906        great_pet
+11941  3688   6839  7153                  9909        hefesto
+11965  3702   6846  7172                  9913        huertaenred-demo
+11967  3704   6847  7176                  9915        income
+11978  3713   6848  71alumnos2020fin.txt  9954        index.php
+11986  3778   6866  71alumnos.csv         9957        innovplast
+11988  3788   6867  71alumnos.csv_bkup    9962        lib
+11992  3813   6870  71alumnos.txt         9967        lso
+12002  3858   6887  7247                  9969        metask
+12011  3870   6901  9870                  9972        msg_srv
+12012  3881   6904  9872                  9973        personasperdidas-demo
+12013  3913   6905  9874                  9974        petsafe
+12103  3928   6910  9880                  9976        qrpet-demo
+12231  3946   6911  9881                  9977        safy
+12235  41     6915  9885                  9982        steam
+12237  61     6916  9887                  altamirano  store-x
+12239  65     6918  9889                  aluvitae    tallerderobotica
+12242  6666   6920  9890                  bin         usr
+12251  6809   6921  9892                  carpas
+12306  6811   6922  9893                  carpasog*<br>
+clear|command not found*<br>
+cp|cp: missing file operand
+Try 'cp --help' for more information.*<br>
+mv|mv: missing file operand
+Try 'mv --help' for more information.*<br>
+rm|rm: missing operand
+Try 'rm --help' for more information.*<br>
+uname|Linux*<br>
+su|su: must be run from a terminal*<br>
+sudo|-bash: sudo: command not found*<br>
+df|df: cannot read table of mounted file systems: No such file or directory
+top|-bash: top: command not found*<br>
+kill|kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]*<br>
+nano|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^G Get Help  ^O Write Out ^W Where Is  ^K Cut Text  ^J Justify   ^C Cur Pos
+^X Exit      ^R Read File ^\ Replace   ^U Uncut Text^T To Spell  ^_ Go To Line*<br>
+mkdir|mkdir: missing operand
+Try 'mkdir --help' for more information.*<br>
+lspci|-bash: lspci: command not found*<br>
+pwd|-bash-4.4$ pwd
+/9899/ACTIVIDADES*<br>
+tree|-bash: tree: command not found*<br>
+-bash-4.4$ mc
+-bash: mc: command not found*<br>
+route|-bash-4.4$ route
+-bash: route: command not found*<br>
+ipconfig|-bash-4.4$ ipconfig
+-bash: ipconfig: command not found*<br>
+ping|-bash-4.4$ ping
+-bash: ping: command not found*<br>
+dos2unix|-bash-4.4$ dos2unix
+-bash: dos2unix: command not found*<br>
+
+
+
+
+
+
+
+
+
+<center> <h4> Martinez Nahuel 7mo 1ra Grupo 1 </h4> </center>
