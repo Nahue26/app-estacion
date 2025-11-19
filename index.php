@@ -17,7 +17,6 @@ define("APP_DESCRIPTION", "Sistema de monitoreo meteorológico con estaciones re
 define("COLOR_SECUNDARIO", "#333333");
 define("TITULO_PAGINA", "Panel de Estaciones");
 
-
 // Constantes adicionales para Enano
 define("TEXTO_PRINCIPAL", "#000000");
 define("FONDO_HEADER_GRADIENTE_INICIO", "#4CAF50");
@@ -50,40 +49,82 @@ $v = $_GET['v'] ?? 'landing';
 $id = $_GET['id'] ?? '';
 
 switch ($v) {
-  case 'panel':
-    require_once "controllers/panelController.php";
+
+    case 'panel':
+        require_once "controllers/panelController.php";
+        break;
+
+    case 'detalle':
+        require_once "controllers/detalleController.php";
+        break;
+
+    case 'login':
+        require_once "controllers/loginController.php";
+        break;
+
+    case 'recovery':
+        require_once "controllers/recoveryController.php";
+        break;
+
+    case 'register':
+        require_once "controllers/registerController.php";
+        break;
+
+    case 'reset':
+        require_once "controllers/resetController.php";
+        break;
+
+    case 'blocked':
+        require_once "controllers/blockedController.php";
+        break;
+
+    case 'validate':
+        require_once "controllers/validateController.php";
+        break;
+
+    case 'logout':
+        session_destroy();
+        header("Location: index.php?v=login");
+        exit;
+
+    // LOGIN ADMIN
+    case 'admin-login':
+        require_once "controllers/adminLoginController.php";
+        new adminLoginController();
+        break;
+
+    case 'admin-login-auth':
+        require_once "controllers/adminLoginController.php";
+        new adminLoginController();
+        break;
+
+    case 'admin-logout':
+        require_once "controllers/adminLoginController.php";
+        new adminLoginController();
+        break;
+
+    // PANEL ADMINISTRADOR
+    case 'administrator':
+        require_once "controllers/administratorController.php";
+        new Administrator();
+        break;
+
+    // MAPA DE CLIENTES
+    case 'map':
+    require_once "controllers/mapController.php";
+    new MapController();
     break;
-  case 'detalle':
-    require_once "controllers/detalleController.php";
-    break;
-  case 'login':
-    require_once "controllers/loginController.php";
-    break;
-  case 'recovery':
-    require_once "controllers/recoveryController.php";
-    break;
-  case 'register':
-    require_once "controllers/registerController.php";
-    break;
-  case 'recovery':
-    require_once "controllers/recoveryController.php";
-    break;
-  case 'reset':
-    require_once "controllers/resetController.php";
-    break;
-  case 'blocked':
-    // Handle blocked/token
-    require_once "controllers/blockedController.php";
-    break;
-  case 'validate':
-    require_once "controllers/validateController.php";
-    break;
-  case 'logout':
-    session_destroy();
-    header("Location: index.php?v=login");
-    exit;
-  default:
-    require_once "controllers/landingController.php";
-    break;
+
+
+    // API INTERNA (JSON)
+    case 'api':
+        require_once "controllers/apiController.php";
+        new ApiController();
+        break;
+
+    default:
+        require_once "controllers/landingController.php";
+        break;
 }
+
 ?>

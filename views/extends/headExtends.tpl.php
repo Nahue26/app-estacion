@@ -27,6 +27,8 @@
 	<meta property="og:image" content="{{ APP_URL }}/img/hero.jpeg">
 
 
+
+
     <style>
       :root {
     --fondo-pagina: {{ FONDO_PAGINA }};
@@ -175,4 +177,9 @@ footer {
 }
 
     </style>
+    <link rel="stylesheet" href="views/static/css/admin_login.css">
+
+
+
 </head>
+<body>

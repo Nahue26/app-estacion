@@ -112,6 +112,7 @@
 		function printToScreen(){
 			echo $this->buffer_tpl;
 		}
+		
 
 	}
 

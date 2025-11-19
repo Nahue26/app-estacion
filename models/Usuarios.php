@@ -288,5 +288,16 @@ private function sendActivationEmail($email, $token_action) {
         return $this->getConnection()->real_escape_string($str);
     }
 
+    /* ============================
+   CONTAR USUARIOS REGISTRADOS
+   ============================ */
+    public function countUsers() {
+    $sql = "SELECT COUNT(*) AS total FROM usuarios";
+    $res = $this->query($sql);
+    return $res[0]["total"] ?? 0;
+    }
+
+
+
 }
 ?>
